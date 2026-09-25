@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TinDog - Tinder for Dogs</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<script>
+  (() => {
+    const stored = localStorage.getItem('theme')
+    const preferred = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    document.documentElement.setAttribute('data-bs-theme', preferred)
+  })()
+</script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#hero">
+      <i class="bi bi-heart-fill text-primary"></i> TinDog
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">TinDog</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="mainNav">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#match">Find a Match</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">How It Works</a></li>
+              <li><a class="dropdown-item" href="#">Success Stories</a></li>
+              <li><a class="dropdown-item" href="#">FAQs</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form class="d-flex mb-3 mb-lg-0 me-lg-3" role="search" onsubmit="return false;">
+          <input class="form-control me-2" type="search" id="breedSearchInput" placeholder="Search breeds..." aria-label="Search">
+        </form>
+
+        <div class="btn-group" role="group" aria-label="Theme toggle">
+          <input type="radio" class="btn-check" name="themeOption" id="themeLight" data-bs-theme-value="light" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="themeLight" data-bs-toggle="tooltip" title="Light mode"><i class="bi bi-sun-fill"></i></label>
+
+          <input type="radio" class="btn-check" name="themeOption" id="themeDark" data-bs-theme-value="dark" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="themeDark" data-bs-toggle="tooltip" title="Dark mode"><i class="bi bi-moon-stars-fill"></i></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header id="hero" class="text-bg-primary bg-gradient" style="padding-top: 130px; padding-bottom: 80px;">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 text-center text-lg-start">
+        <span class="badge text-bg-light text-primary mb-3"><i class="bi bi-stars"></i> Now with smart matching</span>
+        <h1 class="display-4 fw-bold mb-3">Meet new and interesting dogs nearby</h1>
+        <p class="lead mb-4">Find the perfect playdate, walking buddy, or soulmate for your dog.</p>
+        <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+          <a href="#" class="btn btn-light btn-lg">
+            <i class="bi bi-apple"></i> Download for iOS
+          </a>
+          <a href="#" class="btn btn-outline-light btn-lg">
+            <i class="bi bi-google-play"></i> Download for Android
+          </a>
+        </div>
+        <div class="d-flex gap-4 justify-content-center justify-content-lg-start mt-4 text-white-50">
+          <div><span class="fs-4 fw-bold text-white">2M+</span><br>Dogs matched</div>
+          <div><span class="fs-4 fw-bold text-white">180k</span><br>5-star reviews</div>
+          <div><span class="fs-4 fw-bold text-white">40+</span><br>Countries</div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="https://placedog.net/400/700?id=10" alt="dogg" class="img-fluid rounded-4 shadow" style="max-height: 450px;">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="features" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Why dogs (and their humans) love TinDog</h2>
+      <p class="text-body-secondary">Everything you need, built right into the app.</p>
+    </div>
+    <div class="row text-center g-4">
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="p-4 h-100 border rounded-4">
+          <span class="d-inline-block p-3 rounded-circle bg-primary-subtle mb-3">
+            <i class="bi bi-check-circle fs-1 text-primary"></i>
+          </span>
+          <h5 class="fw-bold">Easy to Use</h5>
+          <p class="text-body-secondary mb-0">So easy to use, even your dog could do it.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="p-4 h-100 border rounded-4">
+          <span class="d-inline-block p-3 rounded-circle bg-primary-subtle mb-3">
+            <i class="bi bi-people fs-1 text-primary"></i>
+          </span>
+          <h5 class="fw-bold">Elite Clientele</h5>
+          <p class="text-body-secondary mb-0">We have all the dogs, the greatest dogs.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="p-4 h-100 border rounded-4">
+          <span class="d-inline-block p-3 rounded-circle bg-primary-subtle mb-3">
+            <i class="bi bi-lightning-charge fs-1 text-primary"></i>
+          </span>
+          <h5 class="fw-bold">Guaranteed to Work</h5>
+          <p class="text-body-secondary mb-0">Find the love of your dog's life, or your money back.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="match" class="py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Find a match nearby</h2>
+      <p class="text-body-secondary">Try the search below — it filters the list live.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="input-group input-group-lg mb-4">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="search" class="form-control" id="matchSearchInput" placeholder="Search by name or breed (try &quot;Golden&quot;)">
+        </div>
+        <ul class="list-group shadow-sm" id="matchList">
+          <li class="list-group-item list-group-item-action d-flex align-items-center gap-3" data-name="Bella" data-breed="Golden Retriever">
+            <img src="https://placedog.net/80/80?id=25" class="rounded-circle" width="50" height="50" alt="Bella">
+            <div class="flex-grow-1">
+              <div class="fw-bold">Bella</div>
+              <small class="text-body-secondary">Golden Retriever &middot; 1.2 mi away</small>
+            </div>
+            <span class="badge text-bg-primary rounded-pill">Online</span>
+          </li>
+          <li class="list-group-item list-group-item-action d-flex align-items-center gap-3" data-name="Max" data-breed="Beagle">
+            <img src="https://placedog.net/80/80?id=40" class="rounded-circle" width="50" height="50" alt="Max">
+            <div class="flex-grow-1">
+              <div class="fw-bold">Max</div>
+              <small class="text-body-secondary">Beagle &middot; 0.5 mi away</small>
+            </div>
+            <span class="badge text-bg-secondary rounded-pill">Offline</span>
+          </li>
+          <li class="list-group-item list-group-item-action d-flex align-items-center gap-3" data-name="Luna" data-breed="Golden Doodle">
+            <img src="https://placedog.net/80/80?id=55" class="rounded-circle" width="50" height="50" alt="Luna">
+            <div class="flex-grow-1">
+              <div class="fw-bold">Luna</div>
+              <small class="text-body-secondary">Golden Doodle &middot; 2.8 mi away</small>
+            </div>
+            <span class="badge text-bg-primary rounded-pill">Online</span>
+          </li>
+          <li class="list-group-item list-group-item-action d-flex align-items-center gap-3" data-name="Rocky" data-breed="Boxer">
+            <img src="https://placedog.net/80/80?id=70" class="rounded-circle" width="50" height="50" alt="Rocky">
+            <div class="flex-grow-1">
+              <div class="fw-bold">Rocky</div>
+              <small class="text-body-secondary">Boxer &middot; 4.1 mi away</small>
+            </div>
+            <span class="badge text-bg-secondary rounded-pill">Offline</span>
+          </li>
+          <li class="list-group-item list-group-item-action d-flex align-items-center gap-3" data-name="Daisy" data-breed="Corgi">
+            <img src="https://placedog.net/80/80?id=85" class="rounded-circle" width="50" height="50" alt="Daisy">
+            <div class="flex-grow-1">
+              <div class="fw-bold">Daisy</div>
+              <small class="text-body-secondary">Corgi &middot; 0.9 mi away</small>
+            </div>
+            <span class="badge text-bg-primary rounded-pill">Online</span>
+          </li>
+        </ul>
+        <p class="text-body-secondary text-center mt-3 mb-0 d-none" id="noMatchesMsg">
+          <i class="bi bi-emoji-frown"></i> No dogs match that search.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">Happy Tails</h2>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner rounded-4 overflow-hidden">
+        <div class="carousel-item active">
+          <div class="ratio ratio-21x9">
+            <img src="https://placedog.net/1200/500?id=25" class="d-block w-100 object-fit-cover" alt="Bella">
+          </div>
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+            <p class="mb-1 fs-5">"My dog found his best friend on TinDog!"</p>
+            <p class="fw-bold mb-0">&mdash; Bella</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="ratio ratio-21x9">
+            <img src="https://placedog.net/1200/500?id=40" class="d-block w-100 object-fit-cover" alt="Max">
+          </div>
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+            <p class="mb-1 fs-5">"We matched in a day. Inseparable ever since."</p>
+            <p class="fw-bold mb-0">&mdash; Max</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="ratio ratio-21x9">
+            <img src="https://placedog.net/1200/500?id=55" class="d-block w-100 object-fit-cover" alt="Luna">
+          </div>
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+            <p class="mb-1 fs-5">"TinDog changed my dog's social life forever."</p>
+            <p class="fw-bold mb-0">&mdash; Luna</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="text-center mb-2">
+      <h2 class="fw-bold">A Plan for Every Dog's Needs</h2>
+      <p class="text-body-secondary">Tap a plan to select it &mdash; the border and fill update automatically.</p>
+    </div>
+    <div class="row g-4 justify-content-center mt-2">
+
+      <div class="col-md-4">
+        <input type="radio" class="btn-check" name="plan" id="planFree" data-plan-name="Free" autocomplete="off">
+        <label class="btn btn-outline-primary w-100 h-100 p-4 text-start rounded-4" for="planFree">
+          <h5 class="fw-bold">Free</h5>
+          <h2 class="my-3">$0<span class="fs-6">/mo</span></h2>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>5 matches per day</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>10 messages per day</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>Basic profile</li>
+          </ul>
+        </label>
+      </div>
+
+      <div class="col-md-4">
+        <input type="radio" class="btn-check" name="plan" id="planBasic" data-plan-name="Basic" autocomplete="off" checked>
+        <label class="btn btn-outline-primary w-100 h-100 p-4 text-start rounded-4" for="planBasic">
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="fw-bold">Basic</h5>
+            <span class="badge text-bg-primary">Most popular</span>
+          </div>
+          <h2 class="my-3">$15<span class="fs-6">/mo</span></h2>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>Unlimited matches</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>Unlimited messaging</li>
+            <li class="mb-2">
+              <i class="bi bi-check2 me-2"></i>Priority listing
+              <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" title="Your profile appears higher in search results"></i>
+            </li>
+          </ul>
+        </label>
+      </div>
+
+      <div class="col-md-4">
+        <input type="radio" class="btn-check" name="plan" id="planPremium" data-plan-name="Premium" autocomplete="off">
+        <label class="btn btn-outline-primary w-100 h-100 p-4 text-start rounded-4" for="planPremium">
+          <h5 class="fw-bold">Premium</h5>
+          <h2 class="my-3">$29<span class="fs-6">/mo</span></h2>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>Everything in Basic</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>Top of search results</li>
+            <li class="mb-2"><i class="bi bi-check2 me-2"></i>Dedicated support</li>
+          </ul>
+        </label>
+      </div>
+
+    </div>
+    <div class="text-center mt-4">
+      <button type="button" class="btn btn-primary btn-lg" id="continueBtn">
+        <i class="bi bi-arrow-right-circle me-1"></i> Continue with selected plan
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">Frequently Asked Questions</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Is TinDog really just for dogs?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes! Every profile on TinDog belongs to a dog. Owners manage the account, but the matching is 100% about your dog's personality and play style.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                How does matching work?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">We look at breed, size, energy level, and location to suggest nearby dogs your pup is likely to hit it off with.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Can I cancel anytime?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. Basic and Premium are month-to-month with no contract, and you can downgrade to Free whenever you like.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Is my dog's data safe?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">We only ever share your dog's public profile info with other users &mdash; never your exact address or personal contact details.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="text-bg-dark py-5">
+  <div class="container text-center">
+    <h3 class="fw-bold mb-3">Get the latest tail-wagging updates</h3>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form class="input-group input-group-lg" onsubmit="return false;">
+          <input type="email" class="form-control" placeholder="you@example.com" aria-label="Email address">
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="text-bg-primary bg-gradient pt-5 pb-4">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h5 class="fw-bold"><i class="bi bi-heart-fill"></i> TinDog</h5>
+        <p class="text-white-50">Tinder for dogs. Because your dog deserves a social life too.</p>
+        <div>
+          <a href="#" class="text-white me-3 fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3 fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="fw-bold">Product</h6>
+        <ul class="list-unstyled">
+          <li><a href="#hero" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Home</a></li>
+          <li><a href="#features" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Features</a></li>
+          <li><a href="#pricing" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="fw-bold">Company</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">About</a></li>
+          <li><a href="#" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">Careers</a></li>
+          <li><a href="#faq" class="link-light link-underline-opacity-0 link-underline-opacity-100-hover">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="fw-bold">Stay in the loop</h6>
+        <p class="text-white-50 small">Follow along for new features and the occasional very good boy.</p>
+      </div>
+    </div>
+    <hr class="border-light-subtle">
+    <p class="text-center text-white-50 small mb-0">&copy; 2025 TinDog &ndash; All Rights Reserved</p>
+  </div>
+</footer>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="planToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bi bi-heart-fill text-primary me-2"></i>
+      <strong class="me-auto">TinDog</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="planToastBody">Great choice!</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script>
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el))
+  const themeButtons = document.querySelectorAll('[data-bs-theme-value]')
+  const currentTheme = document.documentElement.getAttribute('data-bs-theme') || 'light'
+  themeButtons.forEach(btn => {
+    if (btn.getAttribute('data-bs-theme-value') === currentTheme) btn.checked = true
+    btn.addEventListener('click', () => {
+      const theme = btn.getAttribute('data-bs-theme-value')
+      document.documentElement.setAttribute('data-bs-theme', theme)
+      localStorage.setItem('theme', theme)
+    })
+  })
+
+  document.getElementById('matchSearchInput').addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase()
+    const items = document.querySelectorAll('#matchList .list-group-item')
+    let visibleCount = 0
+    items.forEach(item => {
+      const name = item.dataset.name.toLowerCase()
+      const breed = item.dataset.breed.toLowerCase()
+      const match = name.includes(q) || breed.includes(q)
+      item.classList.toggle('d-none', !match)
+      if (match) visibleCount++
+    })
+    document.getElementById('noMatchesMsg').classList.toggle('d-none', visibleCount !== 0)
+  })
+  document.getElementById('breedSearchInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      document.getElementById('match').scrollIntoView({ behavior: 'smooth' })
+      document.getElementById('matchSearchInput').value = this.value
+      document.getElementById('matchSearchInput').dispatchEvent(new Event('input'))
+      document.getElementById('matchSearchInput').focus()
+    }
+  })
+  document.getElementById('continueBtn').addEventListener('click', () => {
+    const selected = document.querySelector('input[name="plan"]:checked')
+    const planName = selected ? selected.dataset.planName : 'Free'
+    document.getElementById('planToastBody').textContent = `Great choice! You selected the ${planName} plan.`
+    const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('planToast'))
+    toast.show()
+  })
+</script>
+</body>
+</html>
